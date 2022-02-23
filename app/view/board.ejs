@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>留言板</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+      <!-- 留言板新增     
+        name:{姓名：name,內容：content}
+     -->
+
+    <div class="container">
+        <div class="row justify-content-center">
+           
+            <div class="col-md-8">
+                
+                <div class="text-center">
+                    <h1>留言板</h1>
+                <h2 class="card-title mt-3 ml-4 text-muted" >歡迎您的留言</h2>
+                </div>                            <br>
+                <form action='/insert' method="post">
+               <input class='form-control' name='name' placeholder='姓名' maxlength='30'/>
+                            <br />
+                            <textarea class="form-control"  name="content" placeholder="請留言..."  required></textarea>
+                            <br />
+                            <div class="text-center">
+                                <input class="btn btn-outline-primary" type="submit"  value="發送" />
+                            </form>
+                        <br>
+                    </div>
+                <br>
+  
+<div class="text-center">        
+<h2>留言板內容</h2>
+</div>   
+<br>
+    <div class="text-center">
+        
+<table id="table" width="800px" >
+<tr>
+<th></th>
+<th>姓名</th>
+<th>內容</th>
+<th>操作</th>
+
+
+</tr>
+<% text.forEach(function (item) { %>
+    <form action="/update" method="post">
+
+<tr>
+<th>
+    <button type="button"  id="<%= item.id  %>"  class="btn btn-primary" >修改</button>
+
+</th>
+   <input id="id"  type="hidden" name="id" value="<%= item.id  %>">
+    <th>
+        <p id="Newname<%= item.id  %>"><%= item.name  %></p> 
+        <input style="display:none" id="name<%= item.id  %>" name="name" value="<%= item.name  %>" required >
+    </th>
+    <th>
+        <p id="Newcontent<%= item.id  %>">  <%= item.content  %></p>
+        <input style="display:none" id="content<%= item.id  %>" name="content" value="<%= item.content  %>" required >
+    </th>
+    
+
+<th>    
+    <button type="button"  class="btn btn-outline-danger" onclick="window.location.assign('/delete/<%= item.id  %>')">刪除</button>
+    </th>
+    
+</tr>
+
+
+
+
+<% }) %>
+</table>
+<script>
+    $(document).ready(function(){
+   $("button[class='btn btn-primary']").click(function(){
+    var id = $(this).attr('id');
+    $("#Newname"+id).hide();
+    $("#Newcontent"+id).hide();
+    $("#name"+id).show();
+    $("#content"+id).show();
+ 
+   
+   });
+ });
+       
+     </script>
+<button style="margin:0"  class="btn btn-outline-primary">變更</button>
+</form>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+    <footer>
+   
+</footer>
+    </body>
+
+</html> 
