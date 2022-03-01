@@ -4,8 +4,8 @@ const Controller = require('egg').Controller;
 
 class SshController extends Controller {
     async index() {
-        
-        this.ctx.body = 'hi, egg';
+        const { ctx } = this;
+        ctx.body = 'hi, egg';
       }
 }
 
