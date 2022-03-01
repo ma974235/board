@@ -18,4 +18,8 @@ module.exports = {
     enable: true,
     package: 'egg-cors',
   },
+  ssh :{
+    enable: true,
+    package: 'egg-ssh',
+  }
 };
