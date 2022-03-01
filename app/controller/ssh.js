@@ -3,9 +3,10 @@
 const Controller = require('egg').Controller;
 
 class SshController extends Controller {
-  async echo() {
-    
-  }
+    async index() {
+        const { ctx } = this;
+        ctx.body = 'hi, egg';
+      }
 }
 
 module.exports = SshController;
