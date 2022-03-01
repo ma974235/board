@@ -2,10 +2,10 @@
 
 const Controller = require('egg').Controller;
 
-class CheckController extends Controller {
+class SshController extends Controller {
   async echo() {
     
   }
 }
 
-module.exports = CheckController;
+module.exports = SshController;
