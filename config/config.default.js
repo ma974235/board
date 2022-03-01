@@ -28,6 +28,12 @@ module.exports = appInfo => {
       '.ejs': 'ejs',
     },
   };
+  exports.ssh =  {
+    host: '127.0.0.1',
+    port: '22',
+    username: 'root',
+    password: 'root',
+};
   exports.mysql = {
     // 单数据库信息配置
     client: {
