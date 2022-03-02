@@ -3,3 +3,4 @@ node_modules/
 .DS_Store
 s10714140
 s10714140.pub
+app/controller/home.js
