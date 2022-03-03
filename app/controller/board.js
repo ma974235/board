@@ -3,7 +3,6 @@
 const Controller = require('egg').Controller;
 
 class BoardController extends Controller {
-
     async create(){
         const ctx = this.ctx;
 
