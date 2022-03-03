@@ -3,16 +3,12 @@
 const Controller = require('egg').Controller;
 
 class BoardController extends Controller {
-    async index(){
-        const ctx = this.ctx;
-        let result = await service.base._findAll('Board')
-    }
+
     async create(){
         const ctx = this.ctx;
 
-        let name =  await ctx.request.body.name; //獲取post
-        let content =  await ctx.request.body.content; //獲取post
-         const plus = await ctx.service.board.create(name,content);
+        let {name,content}  = ctx.request.body; //獲取post
+         const plus = await ctx.service.board.create({name,content},'Board');
          ctx.redirect('/')
                               
          

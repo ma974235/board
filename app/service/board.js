@@ -3,16 +3,14 @@
 const Service = require('egg').Service;
 
 class BoardService extends Service {
-    async create(name,content){
-
-        const add = await this.app.mysql.insert('messages',{
-            'name':name,
-            'content':content
-        });
+    async create(data,modelName){
+        const  ctx  = this.ctx
+        const add = await ctx.model[modelName].create(data);
+        return add;
     }
 
     async read(modelName) {
-        const { ctx, app } = this
+        const ctx = this.ctx
         return await ctx.model[modelName].findAll()
       }
     async update(id,name,content){
