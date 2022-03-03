@@ -4,7 +4,14 @@ const Controller = require('egg').Controller;
 
 class BoardController extends Controller {
 
-   
+    async create(){
+        const ctx = this.ctx;
+        let {name,content}  = ctx.request.body; //獲取post
+         const plus = await ctx.service.board.create({name,content},'Board');
+         ctx.redirect('/')
+                              
+         
+    }
 
     async read() {
         const { ctx, service } = this;

@@ -3,7 +3,11 @@
 const Service = require('egg').Service;
 
 class BoardService extends Service {
-   
+    async create(data,modelName){
+        const  ctx  = this.ctx
+        const add = await ctx.model[modelName].create(data);
+        return add;
+    }
 
     async read(modelName) {
         const ctx = this.ctx
