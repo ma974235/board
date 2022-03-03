@@ -9,7 +9,7 @@ module.exports = app => {
       content:TEXT,
     },{
       timestamps: false, //自动增加创建时间
-        tableName: 'messages' //设置表名称
+      tableName: 'messages' //设置表名称
     });
   
     return Board;

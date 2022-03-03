@@ -3,7 +3,7 @@
 const Service = require('egg').Service;
 
 class BoardService extends Service {
-    
+    //新增
     async create(data,modelName){
 
         const  ctx  = this.ctx
@@ -11,14 +11,14 @@ class BoardService extends Service {
      
 
     }
-
+    //讀取
     async read(modelName) {
 
         const ctx = this.ctx
         return await ctx.model[modelName].findAll()
 
     }
-
+    //修改
     async update(id,name,content,modelName){
 
         for (let i = 0; i< id.length; i++) {
@@ -34,7 +34,8 @@ class BoardService extends Service {
 
         }
     
-    }  
+    } 
+    //刪除
     async destroy(id,modelName){
 
         const ctx = this.ctx

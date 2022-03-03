@@ -8,8 +8,8 @@ class BoardController extends Controller {
 
         const ctx = this.ctx;
         let {name,content} =  await ctx.request.body; //獲取post
-         const plus = await ctx.service.board.create({name,content},'Board');
-         ctx.redirect('/')
+        const plus = await ctx.service.board.create({name,content},'Board');
+        ctx.redirect('/')
                            
     }
     //讀取
