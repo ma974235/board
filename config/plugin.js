@@ -10,16 +10,15 @@ module.exports = {
     enable: true,
     package: 'egg-view-ejs',
   },
-  mysql:{
-    enable:true,
-    package:'egg-mysql'
-  },
   cors: {
     enable: true,
     package: 'egg-cors',
   },
-  ssh :{
+
+  sequelize: {
     enable: true,
-    package: 'egg-ssh',
+    package: 'egg-sequelize',
   }
+  
+  
 };
