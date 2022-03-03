@@ -3,6 +3,10 @@
 const Controller = require('egg').Controller;
 
 class BoardController extends Controller {
+    async index(){
+        const ctx = this.ctx;
+        let result = await service.base._findAll('Board')
+    }
     async create(){
         const ctx = this.ctx;
 
@@ -15,9 +19,11 @@ class BoardController extends Controller {
     }
 
     async read() {
-        const ctx = this.ctx;
-        const text = await ctx.service.board.read()
-        
+        const { ctx, service } = this;
+        let result = await service.board.read('Board')
+        await ctx.render('board.ejs',{
+            text:result
+        }); 
     }
     
     

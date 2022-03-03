@@ -11,12 +11,9 @@ class BoardService extends Service {
         });
     }
 
-    async read() {
-        
-        const text = await this.app.mysql.select('messages')
-        await this.ctx.render('board.ejs',{
-            text:text
-        });
+    async read(modelName) {
+        const { ctx, app } = this
+        return await ctx.model[modelName].findAll()
       }
     async update(id,name,content){
         for (let i = 0; i< id.length; i++) {

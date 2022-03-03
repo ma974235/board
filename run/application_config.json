@@ -89,27 +89,27 @@
     "onerror": {
       "errorPageUrl": "",
       "appErrorFilter": null,
-      "templatePath": "/Users/jasen/board/node_modules/egg-onerror/lib/onerror_page.mustache"
+      "templatePath": "/Users/jasen/check/node_modules/egg-onerror/lib/onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "en_US",
       "dirs": [
-        "/Users/jasen/board/node_modules/egg-session/config/locales",
-        "/Users/jasen/board/node_modules/egg-security/config/locales",
-        "/Users/jasen/board/node_modules/egg-jsonp/config/locales",
-        "/Users/jasen/board/node_modules/egg-onerror/config/locales",
-        "/Users/jasen/board/node_modules/egg-i18n/config/locales",
-        "/Users/jasen/board/node_modules/egg-watcher/config/locales",
-        "/Users/jasen/board/node_modules/egg-schedule/config/locales",
-        "/Users/jasen/board/node_modules/egg-multipart/config/locales",
-        "/Users/jasen/board/node_modules/egg-logrotator/config/locales",
-        "/Users/jasen/board/node_modules/egg-static/config/locales",
-        "/Users/jasen/board/node_modules/egg-view/config/locales",
-        "/Users/jasen/board/node_modules/egg-view-ejs/config/locales",
-        "/Users/jasen/board/node_modules/egg-mysql/config/locales",
-        "/Users/jasen/board/node_modules/egg-cors/config/locales",
-        "/Users/jasen/board/node_modules/egg/config/locales",
-        "/Users/jasen/board/config/locales"
+        "/Users/jasen/check/node_modules/egg-session/config/locales",
+        "/Users/jasen/check/node_modules/egg-security/config/locales",
+        "/Users/jasen/check/node_modules/egg-jsonp/config/locales",
+        "/Users/jasen/check/node_modules/egg-onerror/config/locales",
+        "/Users/jasen/check/node_modules/egg-i18n/config/locales",
+        "/Users/jasen/check/node_modules/egg-watcher/config/locales",
+        "/Users/jasen/check/node_modules/egg-schedule/config/locales",
+        "/Users/jasen/check/node_modules/egg-multipart/config/locales",
+        "/Users/jasen/check/node_modules/egg-logrotator/config/locales",
+        "/Users/jasen/check/node_modules/egg-static/config/locales",
+        "/Users/jasen/check/node_modules/egg-view/config/locales",
+        "/Users/jasen/check/node_modules/egg-view-ejs/config/locales",
+        "/Users/jasen/check/node_modules/egg-cors/config/locales",
+        "/Users/jasen/check/node_modules/egg-sequelize/config/locales",
+        "/Users/jasen/check/node_modules/egg/config/locales",
+        "/Users/jasen/check/config/locales"
       ],
       "queryField": "locale",
       "cookieField": "locale",
@@ -120,8 +120,8 @@
     "watcher": {
       "type": "default",
       "eventSources": {
-        "default": "/Users/jasen/board/node_modules/egg-watcher/lib/event-sources/default",
-        "development": "/Users/jasen/board/node_modules/egg-watcher/lib/event-sources/development"
+        "default": "/Users/jasen/check/node_modules/egg-watcher/lib/event-sources/default",
+        "development": "/Users/jasen/check/node_modules/egg-watcher/lib/event-sources/development"
       }
     },
     "customLogger": {
@@ -162,7 +162,7 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "/Users/jasen/board/app/public",
+      "dir": "/Users/jasen/check/app/public",
       "dynamic": true,
       "preload": false,
       "buffer": true,
@@ -171,7 +171,7 @@
     },
     "view": {
       "root": [
-        "/Users/jasen/board/app/view"
+        "/Users/jasen/check/app/view"
       ],
       "cache": true,
       "defaultExtension": ".html",
@@ -181,31 +181,25 @@
       }
     },
     "ejs": {
-      "root": "/Users/jasen/board/app/view",
+      "root": "/Users/jasen/check/app/view",
       "cache": true,
       "debug": false,
       "compileDebug": true,
       "delimiter": null,
       "strict": false
     },
-    "mysql": {
-      "default": {
-        "database": null,
-        "connectionLimit": 5
-      },
-      "app": true,
-      "agent": false,
-      "client": {
-        "host": "127.0.0.1",
-        "port": "3306",
-        "user": "root",
-        "password": "<String len: 8>",
-        "database": "board"
-      }
-    },
     "cors": {
       "origin": "*",
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH"
+    },
+    "sequelize": {
+      "dialect": "mysql",
+      "database": "board",
+      "host": "127.0.0.1",
+      "port": "3306",
+      "username": "root",
+      "password": "<String len: 8>",
+      "user": "root"
     },
     "env": "prod",
     "name": "board",
@@ -230,9 +224,11 @@
         "egg-cors": "^2.2.3",
         "egg-mysql": "^3.1.0",
         "egg-scripts": "^2.11.0",
+        "egg-sequelize": "^6.0.0",
         "egg-view-ejs": "^2.0.1",
         "egg-view-nunjucks": "^2.3.0",
-        "ejs": "^3.1.6"
+        "ejs": "^3.1.6",
+        "mysql2": "^2.3.3"
       },
       "devDependencies": {
         "autod": "^3.0.1",
@@ -241,7 +237,8 @@
         "egg-ci": "^1.11.0",
         "egg-mock": "^3.21.0",
         "eslint": "^5.13.0",
-        "eslint-config-egg": "^7.1.0"
+        "eslint-config-egg": "^7.1.0",
+        "sequelize-cli": "^6.4.1"
       },
       "engines": {
         "node": ">=10.0.0"
@@ -268,9 +265,9 @@
       "author": "",
       "license": "MIT"
     },
-    "baseDir": "/Users/jasen/board",
+    "baseDir": "/Users/jasen/check",
     "HOME": "/Users/jasen",
-    "rundir": "/Users/jasen/board/run",
+    "rundir": "/Users/jasen/check/run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -396,8 +393,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-onerror",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-onerror",
       "version": "2.1.0"
     },
     "session": {
@@ -407,8 +404,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-session",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-session",
       "version": "3.3.0"
     },
     "i18n": {
@@ -418,8 +415,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-i18n",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-i18n",
       "version": "2.1.1"
     },
     "watcher": {
@@ -429,8 +426,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-watcher",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-watcher",
       "version": "3.1.1"
     },
     "multipart": {
@@ -442,8 +439,8 @@
         "schedule"
       ],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-multipart",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-multipart",
       "version": "2.13.1"
     },
     "security": {
@@ -455,8 +452,8 @@
         "session"
       ],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-security",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-security",
       "version": "2.9.0"
     },
     "development": {
@@ -470,8 +467,8 @@
       "env": [
         "local"
       ],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-development",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-development",
       "version": "2.7.0"
     },
     "logrotator": {
@@ -483,8 +480,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-logrotator",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-logrotator",
       "version": "3.1.0"
     },
     "schedule": {
@@ -494,8 +491,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-schedule",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-schedule",
       "version": "3.6.6"
     },
     "static": {
@@ -505,8 +502,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-static",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-static",
       "version": "2.2.0"
     },
     "jsonp": {
@@ -518,8 +515,8 @@
         "security"
       ],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-jsonp",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-jsonp",
       "version": "2.0.0"
     },
     "view": {
@@ -529,8 +526,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/node_modules/egg/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-view",
+      "from": "/Users/jasen/check/node_modules/egg/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-view",
       "version": "2.1.3"
     },
     "ejs": {
@@ -542,20 +539,9 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-view-ejs",
+      "from": "/Users/jasen/check/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-view-ejs",
       "version": "2.0.1"
-    },
-    "mysql": {
-      "enable": true,
-      "package": "egg-mysql",
-      "name": "mysql",
-      "dependencies": [],
-      "optionalDependencies": [],
-      "env": [],
-      "from": "/Users/jasen/board/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-mysql",
-      "version": "3.1.0"
     },
     "cors": {
       "enable": true,
@@ -564,9 +550,20 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/jasen/board/config/plugin.js",
-      "path": "/Users/jasen/board/node_modules/egg-cors",
+      "from": "/Users/jasen/check/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-cors",
       "version": "2.2.3"
+    },
+    "sequelize": {
+      "enable": true,
+      "package": "egg-sequelize",
+      "name": "sequelize",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "/Users/jasen/check/config/plugin.js",
+      "path": "/Users/jasen/check/node_modules/egg-sequelize",
+      "version": "6.0.0"
     }
   }
 }

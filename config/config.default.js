@@ -28,15 +28,10 @@ module.exports = appInfo => {
       '.ejs': 'ejs',
     },
   };
-  exports.ssh =  {
-    host: '127.0.0.1',
-    port: '22',
-    username: 'root',
-    password: 'root',
-};
-  exports.mysql = {
-    // 单数据库信息配置
-    client: {
+
+  exports.sequelize = {
+      // 資料庫類型
+      dialect:'mysql',
       // host
       host: '127.0.0.1',
       // 端口号
@@ -45,14 +40,9 @@ module.exports = appInfo => {
       user: 'root',
       // 密码
       password: 'ma974232',
-      // 数据库名
+      // 資料庫名
       database: 'board',
-    },
-    // 是否加载到 app 上，默认开启
-    app: true,
-    // 是否加载到 agent 上，默认关闭
-    agent: false,
-  };
+    };
   config.security = {
     csrf: {
       enable: false,
