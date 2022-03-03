@@ -3,14 +3,12 @@
 const Controller = require('egg').Controller;
 
 class BoardController extends Controller {
-
     async create(){
         const ctx = this.ctx;
-        let {name,content}  = ctx.request.body; //獲取post
+        let {name,content} =  await ctx.request.body; //獲取post
          const plus = await ctx.service.board.create({name,content},'Board');
          ctx.redirect('/')
-                              
-         
+                           
     }
 
     async read() {
@@ -33,11 +31,13 @@ class BoardController extends Controller {
        ctx.redirect('/')
 
      }
+
      async destroy(){
         const ctx = this.ctx;
         let id=  ctx.params.id; //獲取get
-        let destroy = await ctx.service.board.destroy(id);
+        await ctx.service.board.destroy(id,'Board');
         ctx.redirect('/')
+
     }
  
      

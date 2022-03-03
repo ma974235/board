@@ -3,10 +3,12 @@
 const Service = require('egg').Service;
 
 class BoardService extends Service {
+    
     async create(data,modelName){
         const  ctx  = this.ctx
         const add = await ctx.model[modelName].create(data);
         return add;
+
     }
 
     async read(modelName) {
@@ -23,9 +25,11 @@ class BoardService extends Service {
         const update = await this.app.mysql.update('messages',row)
     }
     }  
-    async destroy(id){
-        const del = await this.app.mysql.delete('messages',
-        {id:id})
+    async destroy(id,modelName){
+        const ctx = this.ctx
+        const result = await ctx.model[modelName].findByPk(id);
+        await result.destroy();
+        
     }
    
    
