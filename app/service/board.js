@@ -3,37 +3,32 @@
 const Service = require('egg').Service;
 
 class BoardService extends Service {
-    async create(name,content){
-
-        const add = await this.app.mysql.insert('messages',{
-            'name':name,
-            'content':content
-        });
+  //留言新增
+  async create(data,modelName){
+    const  ctx  = this.ctx
+    await ctx.model[modelName].create(data)
+  }
+  //全部留言讀取
+  async read(modelName) {
+    const ctx = this.ctx
+    return await ctx.model[modelName].findAll()
+  }
+  //留言修改
+  async update(id,name,content,modelName){
+    for (let i = 0; i< id.length; i++) {
+      let row={
+        'name':name[i],
+        'content':content[i]
+      };
+      await this.ctx.model[modelName].update(row,{where:{'id':id[i]}})
     }
-
-    async read() {
-        
-        const text = await this.app.mysql.select('messages')
-        await this.ctx.render('board.ejs',{
-            text:text
-        });
-      }
-    async update(id,name,content){
-        for (let i = 0; i< id.length; i++) {
-        let row={
-            'id':id[i],
-            'name':name[i],
-            'content':content[i]
-        };
-        const update = await this.app.mysql.update('messages',row)
-    }
-    }  
-    async destroy(id){
-        const del = await this.app.mysql.delete('messages',
-        {id:id})
-    }
-   
-   
+  } 
+  //留言刪除
+  async destroy(id,modelName){
+    const ctx = this.ctx
+    const result = await ctx.model[modelName].findByPk(id);
+    await result.destroy();
+  }
 }
 
 module.exports = BoardService;
