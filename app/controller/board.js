@@ -3,14 +3,14 @@
 const Controller = require('egg').Controller;
 
 class BoardController extends Controller {
-    //新增
+    //新增留言
   async create(){
     const ctx = this.ctx;
     let {name,content} =  await ctx.request.body; //獲取post
     const plus = await ctx.service.board.create({name,content},'Board');
     ctx.redirect('/')
   }
-    //讀取
+    //讀取留言板全部資料
   async read() {
     const { ctx, service } = this;
     let result = await service.board.read('Board')
@@ -18,7 +18,7 @@ class BoardController extends Controller {
     text:result
     }); 
   }
-    //修改
+    //修改留言內容
   async update(){
     const ctx = this.ctx;
     let id = await ctx.request.body.id;
@@ -27,7 +27,7 @@ class BoardController extends Controller {
     await ctx.service.board.update(id,name,content,'Board');
     ctx.redirect('/')
   }
-    //刪除
+    //刪除留言
   async destroy(){
     const ctx = this.ctx;
     let id=  ctx.params.id; //獲取get

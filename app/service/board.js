@@ -3,17 +3,17 @@
 const Service = require('egg').Service;
 
 class BoardService extends Service {
-  //留言新增
+  //新增留言
   async create(data,modelName){
     const  ctx  = this.ctx
     await ctx.model[modelName].create(data)
   }
-  //全部留言讀取
+  //讀取全部留言
   async read(modelName) {
     const ctx = this.ctx
     return await ctx.model[modelName].findAll()
   }
-  //留言修改
+  //修改留言
   async update(id,name,content,modelName){
     for (let i = 0; i< id.length; i++) {
       let row={
@@ -23,7 +23,7 @@ class BoardService extends Service {
       await this.ctx.model[modelName].update(row,{where:{'id':id[i]}})
     }
   } 
-  //留言刪除
+  //刪除留言
   async destroy(id,modelName){
     const ctx = this.ctx
     const result = await ctx.model[modelName].findByPk(id);
