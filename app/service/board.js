@@ -1,39 +1,36 @@
-'use strict';
+'use strict'
 
-const Service = require('egg').Service;
+const Service = require('egg').Service
 
 class BoardService extends Service {
-    async create(name,content){
-
-        const add = await this.app.mysql.insert('messages',{
-            'name':name,
-            'content':content
-        });
-    }
-
-    async read() {
-        
-        const text = await this.app.mysql.select('messages')
-        await this.ctx.render('board.ejs',{
-            text:text
-        });
+  //新增留言
+  async create(data, modelName){
+    const ctx = this.ctx
+    ctx.model[modelName].create(data)
+  }
+  //讀取全部留言
+  async read(modelName) {
+    const ctx = this.ctx
+    return ctx.model[modelName].findAll()
+  }
+  //修改留言
+  async update(id, name, content, modelName){
+    for (let i = 0; i< id.length; i++) {
+      let row = {
+        'name': name[i], 
+        'content': content[i]
       }
-    async update(id,name,content){
-        for (let i = 0; i< id.length; i++) {
-        let row={
-            'id':id[i],
-            'name':name[i],
-            'content':content[i]
-        };
-        const update = await this.app.mysql.update('messages',row)
+      this.ctx.model[modelName].update(row, {
+        where: { 'id': id[i] }
+      })
     }
-    }  
-    async destroy(id){
-        const del = await this.app.mysql.delete('messages',
-        {id:id})
-    }
-   
-   
+  } 
+  //刪除留言
+  async destroy(id, modelName){
+    const ctx = this.ctx
+    const result = await ctx.model[modelName].findByPk(id)
+    await result.destroy()
+  }
 }
 
-module.exports = BoardService;
+module.exports = BoardService
